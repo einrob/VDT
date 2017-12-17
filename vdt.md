@@ -24,23 +24,23 @@ Steps that have to be performed:
 As a shortcut you can find my result video on my youtube channel: 
 https://youtu.be/83YczXwHMvA
 
-In order to see the discussion please scroll to the end of the writeup! 
+In order to see the discussion of the results and possibilities to improve the results please scroll to the end of the writeup! 
 
 ### Training of SVC 
 
-In the follwing section code of the udacity project course section is reused. Steps performed: 
+In the following section code of the udacity project course section is reused. Steps performed: 
 - Loaded training and test images 
 - Randomized search of optimal parameters 
-- Training resut is saved to a pickle file 
+- Training result is saved to a pickle file 
 
-I used the RandomizedSearchCV to find the optimal parameters for my SVC. With this approach several configurations of C and gamma where ran automatized and the best results was saved to disk.  The classification score on the test image set looks promising. 
+I used the RandomizedSearchCV to find the optimal parameters for my SVC. With this approach several configurations of C and gamma where ran automatized and the best results were saved to disk. The classification score on the test image set looks promising. 
 
 I used the HOG features of three channels of the YUV color space to train the SVC. With following parameters: 
 - orient = 8
 - pix_per_cell = 8
 - cell_per_block = 2
 
-Which proved to be a good choise found empirically. 
+Which proved to be a good choice found empirically. 
 
 
 ```python
@@ -347,7 +347,7 @@ For these 10 labels:  [ 1.  1.  1.  0.  0.  1.  0.  1.  1.  0.]
 
 ## Implementing segementation function 
 
-In the follwing section I use the code of the udacity course section of the project as basis to implement a function to find cars in an image and return a list of bouding boxes of the valid detections. This function performs window search based on start/end points of a search area and a scale of the search window. Additionally to the y start/stop coordinates I added also x start/stop coordinates. That way it is possible to define a specific area of the image be search with search windows of different size. The proposed startegy of the udacity course is used to precalculate the HOG features for the whole image and then extract the search windows from the HOG images. 
+In the follwing section I use the code of the udacity course section of the project as a basis to implement a function to find cars in an image and return a list of bouding boxes of the valid detections. This function performs window search based on start/end points of a search area and a scale of the search window. Additionally to the y start/stop coordinates I added also x start/stop coordinates. That way it is possible to define a specific area of the image be search with search windows of different size. The proposed strategy of the udacity course is used to precalculate the HOG features for the whole image and then extract the search windows from the HOG images. 
 
 
 ```python
@@ -500,19 +500,19 @@ The vehicle detection is going to be performed using a static grid for new vehic
 Static grid: 
 The static grid consist of different areas with different scale of search windows. Far range, middle range and near range consists of windows that fit a car at different distances to the camera. As the cars gets smaller with increasing distance, also the size of the search windows are chosen to be smaller. 
 
-The concept of the chosen search area is to (hopefully) detect cars as they enter into the field of view of the vehicle. Cars can approach from ahead and from the left and richt image border. As they got detected a detailed search is performed at the vehicle position in every frame to track the vehicles movement. 
+The concept of the chosen search area is to (hopefully) detect cars as they enter into the field of view of the vehicle. Cars can approach from ahead and from the left and right image border. As they got detected a detailed search is performed at the vehicle position in every frame to track the vehicles movement throughout the image. 
 
 Dynamic search grid: 
 In my approach I do not apply a Kalman Filter to filter and predict the vehicles movement, I simply enlarge the search area around the last known position of the car to take the movement of the car into account. Because the cars moving quite slow in the project video, this approach seems to be sufficient. It would fail if the cars would drive much faster because they would drive out of the estimated search area of the next frame. I am elaborating a tracking architecture at the end of the project writeup in my section “Improvements”. 
 
 ### Construction of the static search grid 
 
-In the follwing section I am constructing the static search grid and show it in an test image. I am using the find_cars function in "debug" to get all the constructed search windows for the different areas and sizes I pass to the function. The function returns an array of bounding boxes without classificytion of the image patch which are concatenated to an array finally containing all the constructed bounding boxes. This array of bounding boxes is then drawn into the image using draw_bounding_boxes to visualize the whole defined search area. In the pipeline the function find_cars is going to return only the bounding boxes with valid classifications. Additionally the HOG visualizations for all three color channels are visualized. 
+In the following section I am constructing the static search grid and show it in a test image. I am using the find_cars function in "debug" mode to get all the constructed search windows for the different areas and sizes I pass to the function. The function returns an array of bounding boxes without classification of the image patch which are concatenated to an array finally containing all the constructed bounding boxes. This array of bounding boxes is then drawn into the image using draw_bounding_boxes to visualize the whole defined search area. In the pipeline the function find_cars is going to return only the bounding boxes with valid classifications. Additionally the HOG visualizations for all three color channels are visualized. 
 
 The HOG feature visualization is shown additionally for every channel of the image. It is possible to recognize the distinct gradient directions of the car. With a little bit of context knowledge our brain is possible to reconstruct the car shape only with these sparse features.  
 
 #### Dynamic search window helper function - Area to scale 
-Later on the scale of the dynamic search window at the last known vehicle position is going to be determinded by the area of the last detection window. In this section the interval change from Area to scale is implemented and tested too. 
+Later on the scale of the dynamic search window at the last known vehicle position is going to be determined by the area of the last detection window. In this section the interval change from area to scale is implemented and tested too. 
 
 
 ```python
@@ -941,11 +941,11 @@ if test == True:
 ![png](/output/output_9_27.png)
 
 
-## False positive rejection strategy - heat map
+## False positive rejection strategy and multipe detection fusion - heat map
 
-To reduce the impact of false positives on the detection result the detections are going to be accumulated in a heat map. For every pixel of a bounding box a value 1 is added to the according pixel in a heat map. Scaling the heatmap to 0-1 would yield in a kind of probability map of detections. The more a pixel of the heatmap is hit of different bounding boxes, the more probable it is that this pixel belongs to an acutal detection. The code is from the udacity course section of the course.  
+To reduce the impact of false positives on the detection result the detections are going to be accumulated in a heat map. For every pixel of a bounding box a value 1 is added to the according pixel in a heat map. Scaling the heatmap to 0-1 would yield in a kind of probability map of detections. The more a pixel of the heatmap is hit of different bounding boxes, the more probable it is that this pixel belongs to an actual detection. The code is from the udacity course section of the course.  
 
-The heat of all bounding boxes somehow reflects the most probable entry points of cars into the image. A picture of all accumulated search windows from before is shown below.  
+The heatmap of all bounding boxes somehow reflects the most probable entry points of cars into the image. A picture of all accumulated search windows from before is shown below.  
 
 
 ```python
@@ -974,7 +974,7 @@ if test == True:
 
 ## Thresholding the heatmap  
 
-When detecting the objects finally we have to decide which pixels we are going to use as valid detections. By applying a threshold on the heatmap we are rejecting less probable pixels and only using pixels with higy confidence of a hit. This is demonstrated and tested on previously generated heat map image of the search window areas. The threshold is chosen so that the two blobs are seperated from each other. 
+When detecting the objects finally we have to decide which pixels we are going to be used as valid detections. By applying a threshold on the heatmap we are rejecting less probable pixels and only using pixels with high confidence of a hit. This is demonstrated and tested on previously generated heatmap image of the search window areas. The threshold is chosen so that the two blobs are separated from each other. 
 
 
 ```python
@@ -1002,7 +1002,7 @@ heatmap_threshold = 1
 
 ## Estimation of object boundaries and center of mass 
 
-In the follwoing section I am using scipy functions to label the pixels of the most probable detections and to calculate the center of mass of the detected rectange of each found label.
+In the follwoing section I am using scipy functions to label the pixels of the most probable detections and to calculate the center of mass of the detected rectangle of each found label.
 
 Center of mass calculation:
 https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.center_of_mass.html
@@ -1203,7 +1203,7 @@ plt.show()
 ![png](/output/output_15_5.png)
 
 
-Applying the label and center of mass calculation to the resulting heat map shows two bounding boxes as expected for the two blobs. The center of the rectangles seems to be calculated right. 
+Applying the label and center of mass calculation to the resulting heatmap shows two bounding boxes as expected for the two blobs. The center of the rectangles seems to be calculated right. 
 
 
 ```python
@@ -1282,7 +1282,7 @@ tracked_objects = tracks()
 
 ## Implementing the image pipeline 
 
-This is function is going to be called by the image processing pipeline. Because the execution of the full static grid search takes a long time to compute, I decided to beeing able to skip frames for the full static search. My idea was that the difference betweent two frames is quite small and it is sufficcient to only search for new vehicles for e.g. every 2nd frame. Through the modulo_frame_skipper variable it is possible to choose at which frames the full static search should be executed. As long no vehicle is detected, the static full search is executed every frame. 
+This function is going to be called by the image processing pipeline. Because the execution of the full static grid search takes a long time to compute, I decided to be able to skip frames for the full static search. My idea was that the difference between two frames is quite small and it is sufficient to only search for new vehicles for e.g. every 2nd frame. Through the modulo_frame_skipper variable it is possible to choose at which frames the full static search should be executed. As long no vehicle is detected, the static full search is executed every frame. 
 
 When a vehicle is detected by the static grid search it is added to the object list of the tracks class. In the next iteration the object bounding boxes of the last iteration are used to define an enlarged search area for a detailed search. These search areas are fed into the find_cars function with different scales. The choosen scale depends on the area of the bounding box of the object stored in the tracks class. This scale is varied a little bit to take into account possible object scale changes due to movement. If the search areas yield into new detections they are added to the tracks class to be used in the next iteration. 
 
@@ -1888,7 +1888,7 @@ def process(input_image, show_debug_images = False, show_debug_messages = False)
 
 ## Testing and tuning 
 
-Because the processing of the video streams takes quite a time I tuned the the architecture and parameters on some difficult frames of the video. I did not plan to use that much of frames, so it happend that the images are not loaded in a loop from disk. I am sorry for about scrolling!! :) 
+Because the processing of the video stream takes quite a time I tuned the architecture and parameters on some difficult frames of the video. I did not plan to use that much of frames, so it happend that the images are not loaded in a loop from disk. I am sorry for the scrolling!! :) 
 
 
 ```python
@@ -2775,11 +2775,11 @@ white_clip = clip1.fl_image(process) #NOTE: this function expects color images!!
 
 # Results  
 
-- In my project I am only using the detected object positions of the last frame to perform a detailed search in an enlarged area around this position. This is increasing the possibility to find the object again as long it is not moving too fast (thats the case in the project video).  If the object would move faster, the enlarged search  bounding box would not be sufficient. 
+- In my project I am only using the detected object positions of the last frame to perform a detailed search in an enlarged area around this position. This is increasing the possibility to find the object again as long it is not moving too fast (thats the case in the project video).  If the object would move faster, the enlarged search bounding box would not be sufficient. 
 - The tracking can easly get lost when measurements are missing or the object is occluded. Also it can get stuck on other objects passing by (e.g. traffic sign)
 - Because of the unfiltered frame to frame detection the bounding boxes are shakey and are not representing a smooth trajectory of the vehicles.   
-- I am not saving any history of object movement which could improve detection stability 
-- Although the classyfier seems to work pretty well, it also seems to like image areas with a lot of gradients. This can be seen when it shortly sticks to the traffic sign or some parts of the trees on the far right as a false positive. This could be tackled by improving the feature set or further training of the svc. Using color histograms may improve on the traffic sign problem. 
+- I am not saving any history of object movement which could improve detection stability. 
+- Although the classyfier seems to work pretty well, it also seems to like image areas with a lot of gradients with different directions. This can be seen when it shortly sticks to the traffic sign or some parts of the trees on the far right as a false positive. This could be tackled by improving the feature set or further training of the svc. Using color histograms may improve on the traffic sign problem. 
 
 # Result Video 
 
@@ -2789,7 +2789,7 @@ https://youtu.be/83YczXwHMvA
 
 # Improvements
 
-This project provides vast possibilities for improvements and fundamental strategies how to tackle the problem, which would blast the time abount I have for this project, so I am only going to discuss them here:   
+This project provides vast possibilities for improvements and fundamental strategies how to tackle the problem, which would blast the time about I have for this project, so I am only going to discuss them here:   
 
 There are two problems to solve in this project: 
 - Segmenting the image → in this case we want to detect only cars
@@ -2798,7 +2798,7 @@ There are two problems to solve in this project:
 ## Image Segmentation 
 
 ### SVM Support Vector Machines 
-In this project I used a support vector machine trained on HOG features of all three channels of the YUV color space. This is kind of the classical image segmentation approach based on “handmade” features that are searched for in the images. We have to think about which features are describing a car the best way and can be used to identify it at every scale and rotation the car is present in an image.  In years of research there were developed a lot of feature descriptors like HOG, SIFT, ORB, SURF and many more to describe distinct features for the objects that have to be relocated in an image with very good results and fast performance. Also the performance of the vehicle tracking in the project video is quite good although only using HOG features without taking into account any color information. By using C++ and utilizing multiple cores, it surely could be run in real time. 
+In this project I used a support vector machine trained on HOG features of all three channels of the YUV color space. This is kind of the classical image segmentation approach based on “handmade” features that are searched for in the images. We have to think about which features are describing a car the best way and can be used to identify it at every scale and rotation the car is present in an image. In years of research there were developed a lot of feature descriptors like HOG, SIFT, ORB, SURF and many more to describe distinct features for the objects that have to be relocated in an image with very good results and fast performance. Also the performance of the vehicle tracking in the project video is quite good although only using HOG features without taking into account any color information. By using C++ and utilizing multiple cores, it surely could be run in real time. 
 
 ### Convolution Neural Networks 
 The state of the art method to do image segmentation is using CNNs like we did in the traffic sign classification project. Like a SVM a CNN is trained on a training set of images denoting “car” and “not a car” for each training image. The big difference is, that the CNN is “learning” the best features that defines a car for it self. As we saw in the traffic sign classification project, the CNN is going to form features for gradients and colors (if color images are used to train) on its own. That way we do not have to construct features in fact the features a CNN is forming are very similar to features like HOG. 
@@ -2810,12 +2810,12 @@ In order to improve the segmentation performance of this project, I would use a 
 Keeping track of found objects can significantly improve stability of the system. Using a Kalman Filter allows to predict object movement which helps to find the object again in the case of lost measurements or object occlusions. There is a common concept of object tracking architecture which is performing following tasks: 
 
 - Generate new object measurements  → Segmentation → Bounding box center 
-- Cost calculation (e.g. Euclidean Distance, Malanobis Distance) between predicted position known objects and new objects
+- Cost calculation (e.g. Euclidean Distance, Mahalanobis Distance) between predicted position known objects and new objects
 - Generation of cost table containing costs of known obstacle positions and new obstacle positions 
-- Object assignment using Munkres/Hungarian Algorithm on  cost table 
+- Object assignment using Munkres/Hungarian Algorithm on cost table 
 - Object Track updates and Object movement prediction using a Kalman Filter
 - Object Track validation – valid counter n measurements needed for track to be valid 
-- Object Purging – invalid counter n lost measurements Deletion of lost objects
+- Object Purging – invalid counter n-lost measurements Deletion of lost objects
 
 There are lots of papers on video object tracking like: 
 http://cvgl.stanford.edu/papers/xiang_iccv15.pdf
