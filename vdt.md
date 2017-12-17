@@ -18,6 +18,14 @@ Steps that have to be performed:
     - Visualize detected vehicles (e.g. bounding boxes around estimated vehicle posisiton)
 
 
+
+### Result Discussiong and Video 
+
+As a shortcut you can find my result video on my youtube channel: 
+https://youtu.be/83YczXwHMvA
+
+In order to see the discussion please scroll to the end of the writeup! 
+
 ### Training of SVC 
 
 In the follwing section code of the udacity project course section is reused. Steps performed: 
@@ -32,7 +40,7 @@ I used the HOG features of three channels of the YUV color space to train the SV
 - pix_per_cell = 8
 - cell_per_block = 2
 
-Which proved to be a good choise empirically. 
+Which proved to be a good choise found empirically. 
 
 
 ```python
@@ -818,19 +826,19 @@ if test == True:
 
 
 
-![png](output_9_2.png)
+![png](/output/output_9_2.png)
 
 
 
-![png](output_9_3.png)
+![png](/output/output_9_3.png)
 
 
 
-![png](output_9_4.png)
+![png](/output/output_9_4.png)
 
 
 
-![png](output_9_5.png)
+![png](/output/output_9_5.png)
 
 
     ----------------------------------------------------------------
@@ -841,19 +849,19 @@ if test == True:
 
 
 
-![png](output_9_7.png)
+![png](/output/output_9_7.png)
 
 
 
-![png](output_9_8.png)
+![png](/output/output_9_8.png)
 
 
 
-![png](output_9_9.png)
+![png](/output/output_9_9.png)
 
 
 
-![png](output_9_10.png)
+![png](/output/output_9_10.png)
 
 
     ----------------------------------------------------------------
@@ -864,19 +872,19 @@ if test == True:
 
 
 
-![png](output_9_12.png)
+![png](/output/output_9_12.png)
 
 
 
-![png](output_9_13.png)
+![png](/output/output_9_13.png)
 
 
 
-![png](output_9_14.png)
+![png](/output/output_9_14.png)
 
 
 
-![png](output_9_15.png)
+![png](/output/output_9_15.png)
 
 
     ----------------------------------------------------------------
@@ -887,19 +895,19 @@ if test == True:
 
 
 
-![png](output_9_17.png)
+![png](/output/output_9_17.png)
 
 
 
-![png](output_9_18.png)
+![png](/output/output_9_18.png)
 
 
 
-![png](output_9_19.png)
+![png](/output/output_9_19.png)
 
 
 
-![png](output_9_20.png)
+![png](/output/output_9_20.png)
 
 
     ----------------------------------------------------------------
@@ -910,19 +918,19 @@ if test == True:
 
 
 
-![png](output_9_22.png)
+![png](/output/output_9_22.png)
 
 
 
-![png](output_9_23.png)
+![png](/output/output_9_23.png)
 
 
 
-![png](output_9_24.png)
+![png](/output/output_9_24.png)
 
 
 
-![png](output_9_25.png)
+![png](/output/output_9_25.png)
 
 
     ----------------------------------------------------------------
@@ -930,7 +938,7 @@ if test == True:
 
 
 
-![png](output_9_27.png)
+![png](/output/output_9_27.png)
 
 
 ## False positive rejection strategy - heat map
@@ -961,7 +969,7 @@ if test == True:
 ```
 
 
-![png](output_11_0.png)
+![png](/output/output_11_0.png)
 
 
 ## Thresholding the heatmap  
@@ -989,7 +997,7 @@ heatmap_threshold = 1
 ```
 
 
-![png](output_13_0.png)
+![png](/output/output_13_0.png)
 
 
 ## Estimation of object boundaries and center of mass 
@@ -1144,7 +1152,7 @@ plt.show()
 
 
 
-![png](output_15_1.png)
+![png](/output/output_15_1.png)
 
 
     [[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
@@ -1171,7 +1179,7 @@ plt.show()
 
 
 
-![png](output_15_3.png)
+![png](/output/output_15_3.png)
 
 
     [((9, 5), (13, 9)), ((21, 5), (24, 8)), ((1, 11), (3, 13)), ((18, 13), (20, 15)), ((9, 16), (11, 18))]
@@ -1192,7 +1200,7 @@ plt.show()
 
 
 
-![png](output_15_5.png)
+![png](/output/output_15_5.png)
 
 
 Applying the label and center of mass calculation to the resulting heat map shows two bounding boxes as expected for the two blobs. The center of the rectangles seems to be calculated right. 
@@ -1228,7 +1236,7 @@ if test == True:
 
 
 
-![png](output_17_1.png)
+![png](/output/output_17_1.png)
 
 
 ## Defining classed for tracked objects and object tracks
@@ -1928,99 +1936,99 @@ plt.show()
 
 
 
-![png](output_23_1.png)
+![png](/output/output_23_1.png)
 
 
 
-![png](output_23_2.png)
+![png](/output/output_23_2.png)
 
 
 
-![png](output_23_3.png)
+![png](/output/output_23_3.png)
 
 
 
-![png](output_23_4.png)
+![png](/output/output_23_4.png)
 
 
 
-![png](output_23_5.png)
+![png](/output/output_23_5.png)
 
 
 
-![png](output_23_6.png)
+![png](/output/output_23_6.png)
 
 
 
-![png](output_23_7.png)
+![png](/output/output_23_7.png)
 
 
 
-![png](output_23_8.png)
+![png](/output/output_23_8.png)
 
 
 
-![png](output_23_9.png)
+![png](/output/output_23_9.png)
 
 
 
-![png](output_23_10.png)
+![png](/output/output_23_10.png)
 
 
 
-![png](output_23_11.png)
+![png](/output/output_23_11.png)
 
 
 
-![png](output_23_12.png)
+![png](/output/output_23_12.png)
 
 
 
-![png](output_23_13.png)
+![png](/output/output_23_13.png)
 
 
 
-![png](output_23_14.png)
+![png](/output/output_23_14.png)
 
 
 
-![png](output_23_15.png)
+![png](/output/output_23_15.png)
 
 
 
-![png](output_23_16.png)
+![png](/output/output_23_16.png)
 
 
 
-![png](output_23_17.png)
+![png](/output/output_23_17.png)
 
 
 
-![png](output_23_18.png)
+![png](/output/output_23_18.png)
 
 
 
-![png](output_23_19.png)
+![png](/output/output_23_19.png)
 
 
 
-![png](output_23_20.png)
+![png](/output/output_23_20.png)
 
 
 
-![png](output_23_21.png)
+![png](/output/output_23_21.png)
 
 
 
-![png](output_23_22.png)
+![png](/output/output_23_22.png)
 
 
 
-![png](output_23_23.png)
+![png](/output/output_23_23.png)
 
 
 
-![png](output_23_24.png)
+![png](/output/output_23_24.png)
 
 
 I really should have used a loop.... :) 
@@ -2164,499 +2172,499 @@ plt.show()
 
 
 
-![png](output_25_1.png)
+![png](/output/output_25_1.png)
 
 
 
-![png](output_25_2.png)
+![png](/output/output_25_2.png)
 
 
 
-![png](output_25_3.png)
+![png](/output/output_25_3.png)
 
 
 
-![png](output_25_4.png)
+![png](/output/output_25_4.png)
 
 
 
-![png](output_25_5.png)
+![png](/output/output_25_5.png)
 
 
 
-![png](output_25_6.png)
+![png](/output/output_25_6.png)
 
 
 
-![png](output_25_7.png)
+![png](/output/output_25_7.png)
 
 
 
-![png](output_25_8.png)
+![png](/output/output_25_8.png)
 
 
 
-![png](output_25_9.png)
+![png](/output/output_25_9.png)
 
 
 
-![png](output_25_10.png)
+![png](/output/output_25_10.png)
 
 
 
-![png](output_25_11.png)
+![png](/output/output_25_11.png)
 
 
 
-![png](output_25_12.png)
+![png](/output/output_25_12.png)
 
 
 
-![png](output_25_13.png)
+![png](/output/output_25_13.png)
 
 
 
-![png](output_25_14.png)
+![png](/output/output_25_14.png)
 
 
 
-![png](output_25_15.png)
+![png](/output/output_25_15.png)
 
 
 
-![png](output_25_16.png)
+![png](/output/output_25_16.png)
 
 
 
-![png](output_25_17.png)
+![png](/output/output_25_17.png)
 
 
 
-![png](output_25_18.png)
+![png](/output/output_25_18.png)
 
 
 
-![png](output_25_19.png)
+![png](/output/output_25_19.png)
 
 
 
-![png](output_25_20.png)
+![png](/output/output_25_20.png)
 
 
 
-![png](output_25_21.png)
+![png](/output/output_25_21.png)
 
 
 
-![png](output_25_22.png)
+![png](/output/output_25_22.png)
 
 
 
-![png](output_25_23.png)
+![png](/output/output_25_23.png)
 
 
 
-![png](output_25_24.png)
+![png](/output/output_25_24.png)
 
 
 
-![png](output_25_25.png)
+![png](/output/output_25_25.png)
 
 
 
-![png](output_25_26.png)
+![png](/output/output_25_26.png)
 
 
 
-![png](output_25_27.png)
+![png](/output/output_25_27.png)
 
 
 
-![png](output_25_28.png)
+![png](/output/output_25_28.png)
 
 
 
-![png](output_25_29.png)
+![png](/output/output_25_29.png)
 
 
 
-![png](output_25_30.png)
+![png](/output/output_25_30.png)
 
 
 
-![png](output_25_31.png)
+![png](/output/output_25_31.png)
 
 
 
-![png](output_25_32.png)
+![png](/output/output_25_32.png)
 
 
 
-![png](output_25_33.png)
+![png](/output/output_25_33.png)
 
 
 
-![png](output_25_34.png)
+![png](/output/output_25_34.png)
 
 
 
-![png](output_25_35.png)
+![png](/output/output_25_35.png)
 
 
 
-![png](output_25_36.png)
+![png](/output/output_25_36.png)
 
 
 
-![png](output_25_37.png)
+![png](/output/output_25_37.png)
 
 
 
-![png](output_25_38.png)
+![png](/output/output_25_38.png)
 
 
 
-![png](output_25_39.png)
+![png](/output/output_25_39.png)
 
 
 
-![png](output_25_40.png)
+![png](/output/output_25_40.png)
 
 
 
-![png](output_25_41.png)
+![png](/output/output_25_41.png)
 
 
 
-![png](output_25_42.png)
+![png](/output/output_25_42.png)
 
 
 
-![png](output_25_43.png)
+![png](/output/output_25_43.png)
 
 
 
-![png](output_25_44.png)
+![png](/output/output_25_44.png)
 
 
 
-![png](output_25_45.png)
+![png](/output/output_25_45.png)
 
 
 
-![png](output_25_46.png)
+![png](/output/output_25_46.png)
 
 
 
-![png](output_25_47.png)
+![png](/output/output_25_47.png)
 
 
 
-![png](output_25_48.png)
+![png](/output/output_25_48.png)
 
 
 
-![png](output_25_49.png)
+![png](/output/output_25_49.png)
 
 
 
-![png](output_25_50.png)
+![png](/output/output_25_50.png)
 
 
 
-![png](output_25_51.png)
+![png](/output/output_25_51.png)
 
 
 
-![png](output_25_52.png)
+![png](/output/output_25_52.png)
 
 
 
-![png](output_25_53.png)
+![png](/output/output_25_53.png)
 
 
 
-![png](output_25_54.png)
+![png](/output/output_25_54.png)
 
 
 
-![png](output_25_55.png)
+![png](/output/output_25_55.png)
 
 
 
-![png](output_25_56.png)
+![png](/output/output_25_56.png)
 
 
 
-![png](output_25_57.png)
+![png](/output/output_25_57.png)
 
 
 
-![png](output_25_58.png)
+![png](/output/output_25_58.png)
 
 
 
-![png](output_25_59.png)
+![png](/output/output_25_59.png)
 
 
 
-![png](output_25_60.png)
+![png](/output/output_25_60.png)
 
 
 
-![png](output_25_61.png)
+![png](/output/output_25_61.png)
 
 
 
-![png](output_25_62.png)
+![png](/output/output_25_62.png)
 
 
 
-![png](output_25_63.png)
+![png](/output/output_25_63.png)
 
 
 
-![png](output_25_64.png)
+![png](/output/output_25_64.png)
 
 
 
-![png](output_25_65.png)
+![png](/output/output_25_65.png)
 
 
 
-![png](output_25_66.png)
+![png](/output/output_25_66.png)
 
 
 
-![png](output_25_67.png)
+![png](/output/output_25_67.png)
 
 
 
-![png](output_25_68.png)
+![png](/output/output_25_68.png)
 
 
 
-![png](output_25_69.png)
+![png](/output/output_25_69.png)
 
 
 
-![png](output_25_70.png)
+![png](/output/output_25_70.png)
 
 
 
-![png](output_25_71.png)
+![png](/output/output_25_71.png)
 
 
 
-![png](output_25_72.png)
+![png](/output/output_25_72.png)
 
 
 
-![png](output_25_73.png)
+![png](/output/output_25_73.png)
 
 
 
-![png](output_25_74.png)
+![png](/output/output_25_74.png)
 
 
 
-![png](output_25_75.png)
+![png](/output/output_25_75.png)
 
 
 
-![png](output_25_76.png)
+![png](/output/output_25_76.png)
 
 
 
-![png](output_25_77.png)
+![png](/output/output_25_77.png)
 
 
 
-![png](output_25_78.png)
+![png](/output/output_25_78.png)
 
 
 
-![png](output_25_79.png)
+![png](/output/output_25_79.png)
 
 
 
-![png](output_25_80.png)
+![png](/output/output_25_80.png)
 
 
 
-![png](output_25_81.png)
+![png](/output/output_25_81.png)
 
 
 
-![png](output_25_82.png)
+![png](/output/output_25_82.png)
 
 
 
-![png](output_25_83.png)
+![png](/output/output_25_83.png)
 
 
 
-![png](output_25_84.png)
+![png](/output/output_25_84.png)
 
 
 
-![png](output_25_85.png)
+![png](/output/output_25_85.png)
 
 
 
-![png](output_25_86.png)
+![png](/output/output_25_86.png)
 
 
 
-![png](output_25_87.png)
+![png](/output/output_25_87.png)
 
 
 
-![png](output_25_88.png)
+![png](/output/output_25_88.png)
 
 
 
-![png](output_25_89.png)
+![png](/output/output_25_89.png)
 
 
 
-![png](output_25_90.png)
+![png](/output/output_25_90.png)
 
 
 
-![png](output_25_91.png)
+![png](/output/output_25_91.png)
 
 
 
-![png](output_25_92.png)
+![png](/output/output_25_92.png)
 
 
 
-![png](output_25_93.png)
+![png](/output/output_25_93.png)
 
 
 
-![png](output_25_94.png)
+![png](/output/output_25_94.png)
 
 
 
-![png](output_25_95.png)
+![png](/output/output_25_95.png)
 
 
 
-![png](output_25_96.png)
+![png](/output/output_25_96.png)
 
 
 
-![png](output_25_97.png)
+![png](/output/output_25_97.png)
 
 
 
-![png](output_25_98.png)
+![png](/output/output_25_98.png)
 
 
 
-![png](output_25_99.png)
+![png](/output/output_25_99.png)
 
 
 
-![png](output_25_100.png)
+![png](/output/output_25_100.png)
 
 
 
-![png](output_25_101.png)
+![png](/output/output_25_101.png)
 
 
 
-![png](output_25_102.png)
+![png](/output/output_25_102.png)
 
 
 
-![png](output_25_103.png)
+![png](/output/output_25_103.png)
 
 
 
-![png](output_25_104.png)
+![png](/output/output_25_104.png)
 
 
 
-![png](output_25_105.png)
+![png](/output/output_25_105.png)
 
 
 
-![png](output_25_106.png)
+![png](/output/output_25_106.png)
 
 
 
-![png](output_25_107.png)
+![png](/output/output_25_107.png)
 
 
 
-![png](output_25_108.png)
+![png](/output/output_25_108.png)
 
 
 
-![png](output_25_109.png)
+![png](/output/output_25_109.png)
 
 
 
-![png](output_25_110.png)
+![png](/output/output_25_110.png)
 
 
 
-![png](output_25_111.png)
+![png](/output/output_25_111.png)
 
 
 
-![png](output_25_112.png)
+![png](/output/output_25_112.png)
 
 
 
-![png](output_25_113.png)
+![png](/output/output_25_113.png)
 
 
 
-![png](output_25_114.png)
+![png](/output/output_25_114.png)
 
 
 
-![png](output_25_115.png)
+![png](/output/output_25_115.png)
 
 
 
-![png](output_25_116.png)
+![png](/output/output_25_116.png)
 
 
 
-![png](output_25_117.png)
+![png](/output/output_25_117.png)
 
 
 
-![png](output_25_118.png)
+![png](/output/output_25_118.png)
 
 
 
-![png](output_25_119.png)
+![png](/output/output_25_119.png)
 
 
 
-![png](output_25_120.png)
+![png](/output/output_25_120.png)
 
 
 
-![png](output_25_121.png)
+![png](/output/output_25_121.png)
 
 
 
-![png](output_25_122.png)
+![png](/output/output_25_122.png)
 
 
 
-![png](output_25_123.png)
+![png](/output/output_25_123.png)
 
 
 
-![png](output_25_124.png)
+![png](/output/output_25_124.png)
 
 
 ## Processing the video stream 
@@ -2767,11 +2775,17 @@ white_clip = clip1.fl_image(process) #NOTE: this function expects color images!!
 
 # Results  
 
-- In my project I am only using the detected object positions of the last frame to perform a detailed search in an enlarged area around this position. This is increasing the possibility to find the object again as long it is not moving fast (thats the case in the project video).  If the object would move faster, the enlarged search  bounding box would not be sufficient. 
-- The tracking can easly get lost when measurements are missing or the object is occluded
+- In my project I am only using the detected object positions of the last frame to perform a detailed search in an enlarged area around this position. This is increasing the possibility to find the object again as long it is not moving too fast (thats the case in the project video).  If the object would move faster, the enlarged search  bounding box would not be sufficient. 
+- The tracking can easly get lost when measurements are missing or the object is occluded. Also it can get stuck on other objects passing by (e.g. traffic sign)
 - Because of the unfiltered frame to frame detection the bounding boxes are shakey and are not representing a smooth trajectory of the vehicles.   
-- I am not saving any hostory of object movement which could improve detection stability 
-- Although the classyfier seems to work pretty well, it also seems to like image areas with a lot of gradients. This can be seen when it shortly sticks to the traffic sign or some parts of the trees on the far right. This could be tackled by improving the feature set or further training of the svc. 
+- I am not saving any history of object movement which could improve detection stability 
+- Although the classyfier seems to work pretty well, it also seems to like image areas with a lot of gradients. This can be seen when it shortly sticks to the traffic sign or some parts of the trees on the far right as a false positive. This could be tackled by improving the feature set or further training of the svc. Using color histograms may improve on the traffic sign problem. 
+
+# Result Video 
+
+Please find my result video on my youtube channel: 
+https://youtu.be/83YczXwHMvA
+
 
 # Improvements
 
